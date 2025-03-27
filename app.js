@@ -1,20 +1,19 @@
 const express = require('express');
 const app = express();
 const port = 1100;
-//includi posts
-const posts = require('./postsArray.js')
+
+//rendi publiche le immagini
+app.use(express.static('public'))
+//importa router
+const blogRouter = require('./routers/posts');
 
 app.get('/', (req, res) => {
     console.log('response to client was sent for /');
 
-    res.send('server del blog-router')
+    res.send('server del blog')
 })
 
-app.get('/posts', (req, res) => {
-    console.log('response to client was sent for /posts');
-
-    res.json(posts)
-})
+app.use("/posts", blogRouter)
 
 app.listen(port, () => {
     console.log('server attivo su port ' + port);
