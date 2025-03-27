@@ -8,7 +8,7 @@ app.use(express.static('public'))
 const blogRouter = require('./routers/posts');
 
 app.get('/', (req, res) => {
-    console.log('response to client was sent for /');
+    console.log('response to client was sent for /app');
 
     res.send('server del blog')
 })
