@@ -31,25 +31,60 @@ router.post('/', (req, res) => {
 router.put('/:slug', (req, res) => {
     console.log('user is trying to modify element ' + req.params.slug);
 
-    const result = posts.find((param) => {
-        return param['slug']=== req.params.slug;
-    }) ?? (' -');
+    let result = '' 
 
-    res.json('stai provando a modificare' + result)
+    posts.forEach((param) => {
+        if (param.slug == req.params.slug) {
+            result = param.slug
+        } 
+
+    })
+    
+    if (result.length == 0) {
+        result = '-'
+    }
+
+    res.send('stai provando a modificare ' + result)
 });
 
 // modifica parte di un post
 router.patch('/:slug', (req, res) => {
     console.log('user is trying to partially modify element ' + req.params.slug);
 
-    res.send('stai provando a modificare parzialmente ' + req.params.slug);
+    let result = '' 
+
+    posts.forEach((param) => {
+        if (param.slug == req.params.slug) {
+            result = param.slug
+        } 
+
+    })
+    
+    if (result.length == 0) {
+        result = '-'
+    }
+
+    res.send('stai provando a modificare ' + result)
     });
 
 // destroy
 router.delete('/:slug', (req, res) => {
     console.log('user is trying to destroy element ' + req.params.slug);
 
-    res.send('Eliminazione di ' + req.params.slug);
+    let result = '' 
+
+    posts.forEach((param) => {
+        if (param.slug == req.params.slug) {
+            result = param.slug
+        } 
+
+    })
+    
+    if (result.length == 0) {
+        result = '-'
+    }
+
+    res.send('Eliminazione di ' + result);
     });
 
 
