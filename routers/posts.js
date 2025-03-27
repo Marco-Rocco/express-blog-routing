@@ -17,6 +17,22 @@ router.get('/:slug', (req, res) => {
     }) ?? ('nessun risultato trovato');
 
     res.json(result)
+});
+
+router.post('/', (req, res) => {
+    console.log('the user is creating a new post');
+
+    res.send('creazione di un nuovo oggetto')
+});
+
+router.put('/:slug', (req, res) => {
+    console.log('user is trying to modify element ' + req.params.slug);
+
+    const result = posts.find((param) => {
+        return param.slug === req.params.slug;
+    }) ?? ('nessun risultato trovato');
+
+    res.json(result)
 })
 
 
