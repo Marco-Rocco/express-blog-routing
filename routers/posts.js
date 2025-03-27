@@ -9,6 +9,7 @@ router.get('/', (req, res) => {
     res.json(posts)
 });
 
+//ottieni post desiderato
 router.get('/:slug', (req, res) => {
     console.log('showing details for post ' + req.params.slug);
 
@@ -19,21 +20,37 @@ router.get('/:slug', (req, res) => {
     res.json(result)
 });
 
+//crea nuovo post
 router.post('/', (req, res) => {
     console.log('the user is creating a new post');
 
     res.send('creazione di un nuovo oggetto')
 });
 
+//modifica un post per intero
 router.put('/:slug', (req, res) => {
     console.log('user is trying to modify element ' + req.params.slug);
 
     const result = posts.find((param) => {
-        return param.slug === req.params.slug;
-    }) ?? ('nessun risultato trovato');
+        return param['slug']=== req.params.slug;
+    }) ?? (' -');
 
-    res.json(result)
-})
+    res.json('stai provando a modificare' + result)
+});
+
+// modifica parte di un post
+router.patch('/:slug', (req, res) => {
+    console.log('user is trying to partially modify element ' + req.params.slug);
+
+    res.send('stai provando a modificare parzialmente ' + req.params.slug);
+    });
+
+// destroy
+router.delete('/:slug', (req, res) => {
+    console.log('user is trying to destroy element ' + req.params.slug);
+
+    res.send('Eliminazione di ' + req.params.slug);
+    });
 
 
 
