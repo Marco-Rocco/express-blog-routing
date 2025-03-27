@@ -14,7 +14,7 @@ router.get('/:slug', (req, res) => {
 
     const result = posts.find((param) => {
         return param.slug === req.params.slug;
-    });
+    }) ?? ('nessun risultato trovato');
 
     res.json(result)
 })
