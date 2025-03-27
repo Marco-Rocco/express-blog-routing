@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const port = 1100;
 //includi posts
-const posts = require('./posts.js')
+const posts = require('./postsArray.js')
 
 app.get('/', (req, res) => {
     console.log('response to client was sent for /');
