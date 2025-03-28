@@ -31,60 +31,33 @@ router.post('/', (req, res) => {
 router.put('/:slug', (req, res) => {
     console.log('user is trying to modify element ' + req.params.slug);
 
-    let result = '' 
+    let currentSlug = req.params.slug;
 
-    posts.forEach((param) => {
-        if (param.slug == req.params.slug) {
-            result = param.slug
-        } 
+    let currentPost = posts.find((post) => post.slug === currentSlug);
 
-    })
-    
-    if (result.length == 0) {
-        result = '-'
-    }
-
-    res.send('stai provando a modificare ' + result)
+    currentPost ? res.send('stai provando a modificare ' + currentPost.slug) : res.send('inserisci uno slug valido')
 });
 
 // modifica parte di un post
 router.patch('/:slug', (req, res) => {
     console.log('user is trying to partially modify element ' + req.params.slug);
 
-    let result = '' 
+    let currentSlug = req.params.slug;
 
-    posts.forEach((param) => {
-        if (param.slug == req.params.slug) {
-            result = param.slug
-        } 
+    let currentPost = posts.find((post) => post.slug === currentSlug);
 
-    })
-    
-    if (result.length == 0) {
-        result = '-'
-    }
-
-    res.send('stai provando a modificare ' + result)
+    currentPost ? res.send('stai provando a modificare parzialmente ' + currentPost.slug) : res.send('inserisci uno slug valido')
     });
 
 // destroy
 router.delete('/:slug', (req, res) => {
     console.log('user is trying to destroy element ' + req.params.slug);
 
-    let result = '' 
+    let currentSlug = req.params.slug;
 
-    posts.forEach((param) => {
-        if (param.slug == req.params.slug) {
-            result = param.slug
-        } 
+    let currentPost = posts.find((post) => post.slug === currentSlug);
 
-    })
-    
-    if (result.length == 0) {
-        result = '-'
-    }
-
-    res.send('Eliminazione di ' + result);
+    currentPost ? res.send('stai provando ad eliminare ' + currentPost.slug) : res.send('inserisci uno slug valido')
     });
 
 
